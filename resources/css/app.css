@@ -1,0 +1,1124 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */
+
+
+/* show animenya */
+
+/* start show anime*/
+
+/* === Custom Style for Anime Detail Page === */
+
+/* Warna dasar dan font */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Judul Anime */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Gambar thumbnail */
+.img-fluid {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-fluid:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Genre badge */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.75em;
+    border-radius: 12px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.badge:hover {
+    background-color: #0056b3;
+}
+
+/* Sinopsis */
+p {
+    line-height: 1.6;
+}
+
+/* Tombol kembali */
+.btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+/* end show anime */
+
+
+/* ========================================= */
+
+/* Css untuk navbar  */
+
+/* start navbar*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #151111;
+}
+
+.navbar {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #151111;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo di kiri */
+.navbar-left {
+    flex: 1;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4f46e5;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Navigasi di tengah */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    flex: 2;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #f9f9f9;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #4f46e5;
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Search box di kanan */
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    /* kiri ditambah agar tidak nabrak icon */
+    border-radius: 25px;
+    border: 2px solid #645eff;
+    background-color: #645eff;
+    color: white;
+    font-weight: bold;
+}
+
+.search-box:focus {
+    border-color: #4f46e5;
+    background: #645eff;
+    color: white;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 1rem;
+    pointer-events: none;
+    /* Biar klik tetap ke input */
+}
+
+.search-container {
+    position: relative;
+    width: 250px;
+    /* Sesuaikan panjang box */
+}
+
+
+/* end Navbar*/
+
+/* ============================================================================
+
+/* CSS Hero Section */
+
+/* start Hero Section*/
+
+/* Transisi yang lebih halus */
+.carousel-item {
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Fade transition untuk efek yang lebih smooth */
+.carousel-fade .carousel-item {
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Sembunyikan panah tapi tetap berfungsi */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    width: 80px;
+    height: 80px;
+}
+
+/* Tampilkan panah saat hover carousel */
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    opacity: 0.7;
+}
+
+/* Sembunyikan icon default */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none;
+}
+
+/* Custom arrow design */
+.carousel-control-prev::before,
+.carousel-control-next::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.carousel-control-prev::before {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 20px solid rgba(255, 255, 255, 0.8);
+}
+
+.carousel-control-next::before {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 20px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Gambar fit sempurna tanpa zoom */
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Hero carousel container dengan ukuran besar */
+.hero-carousel-container {
+    height: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Caption styling yang lebih menarik */
+.carousel-caption {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px !important;
+    max-width: 600px !important;
+    bottom: 40px !important;
+    left: 40px !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+}
+
+.btn-warning {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+}
+
+/* Responsive untuk tablet */
+@media (max-width: 992px) {
+    .hero-carousel-container {
+        height: 500px;
+    }
+
+    .carousel-caption {
+        max-width: 500px !important;
+        padding: 25px !important;
+    }
+
+    .carousel-caption h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive untuk mobile */
+@media (max-width: 768px) {
+    .hero-carousel-container {
+        height: 400px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+
+    .carousel-caption {
+        max-width: 90% !important;
+        padding: 20px !important;
+        bottom: 20px !important;
+        left: 20px !important;
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+
+    .btn-warning {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Overlay gradient untuk readability */
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+}
+
+/* End hero section*/
+
+
+/* !-- CSS untuk cards --> */
+
+/* Start style card home section */
+
+/* Card Anime Styles */
+
+.card-body {
+    background: rgba(0, 0, 0, 0.899);
+    /* Transparan gelap */
+    backdrop-filter: blur(10px);
+    /* Blur latar belakang */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+    border-radius: 20px 20px 0 0;
+    /* Atas bulat, bawah 0 */
+    padding: 25px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.card-anime {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 15px rgb(32, 5, 238); */
+}
+
+.card-anime:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgb(32, 5, 238);
+    /* background: linear-gradient(90deg, #7f00ff, #e100ff); */
+}
+
+.card-anime img {
+    transition: transform 0.3s ease;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-anime:hover img {
+    transform: scale(1.05);
+}
+
+.card-anime .card-body {
+    padding: 20px;
+}
+
+.card-anime .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f7bf07;
+}
+
+.card-anime .card-text {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.card-anime .badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffc107, #ff6b35);
+    border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-carousel-container {
+        height: 500px;
+    }
+
+    .carousel-caption {
+        max-width: 500px !important;
+        padding: 25px !important;
+    }
+
+    .carousel-caption h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-mini-cards {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-carousel-container {
+        height: 400px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+
+    .carousel-caption {
+        max-width: 90% !important;
+        padding: 20px !important;
+        bottom: 20px !important;
+        left: 20px !important;
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+
+    .btn-warning {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .card-anime img {
+        height: 200px;
+    }
+}
+
+.custom-modern-button {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.custom-modern-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(90deg, #e100ff, #ff8a00);
+    color: white;
+}
+
+.custom-modern-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(224, 0, 255, 0.3);
+}
+
+.center-container {
+    height: 100vh;
+}
+
+/* buat on going */
+.card-anime {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+.card-anime:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.4em 0.6em;
+    border-radius: 0.35rem;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+
+/* End style card home section */
+
+
+
+/* trending css */
+
+/* start */
+/* Slider Navigation - Smooth and Responsive */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.slider-nav:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.slider-nav:active {
+    transform: translateY(-50%) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.slider-nav.start {
+    left: 16px;
+}
+
+.slider-nav.end {
+    right: 16px;
+}
+
+/* Anime Cards - Enhanced Smooth Animations */
+.anime-card {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+.anime-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+
+.anime-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow:
+        0 12px 28px rgba(255, 255, 255, 0.15),
+        0 8px 16px rgba(255, 255, 255, 0.1),
+        0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+.anime-card:hover::before {
+    opacity: 1;
+}
+
+/* Special Iwal Card - Enhanced Effects */
+#iwal.card {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+#iwal.card:hover {
+    transform: translateY(-10px) scale(1.08) !important;
+    box-shadow:
+        0 20px 40px rgba(2, 21, 198, 0.958) !important;
+}
+
+/* Small Cards - Refined Animations */
+.anime-card.small-card {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    transform-origin: center center;
+    transform: translateY(0) scale(1);
+}
+
+.anime-card.small-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow:
+        0 16px 32px rgba(15, 51, 255, 0.2),
+        0 8px 16px rgba(16, 221, 23, 0.3),
+        0 4px 8px rgba(15, 51, 255, 0.1);
+}
+
+/* Slider Container - Smooth Scrolling */
+#trendingSlider {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#trendingSlider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    .slider-nav {
+        font-size: 1.2rem;
+        width: 32px;
+        height: 32px;
+        opacity: 0.7;
+    }
+
+    .slider-nav.start {
+        left: 4px;
+    }
+
+    .slider-nav.end {
+        right: 4px;
+    }
+
+    .anime-card:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .anime-card.small-card:hover {
+        transform: translateY(-3px) scale(1.02);
+    }
+
+    #iwal.card:hover {
+        transform: translateY(-6px) scale(1.05) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-nav {
+        font-size: 1rem;
+        width: 28px;
+        height: 28px;
+    }
+
+    .anime-card:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+
+    .anime-card.small-card:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+
+    .slider-nav,
+    .anime-card,
+    .anime-card.small-card,
+    #iwal.card {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* Additional Smooth Touches */
+.anime-card img {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1);
+}
+
+.anime-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Universal Text Styling for All Card Elements */
+.anime-card *,
+.anime-card.small-card *,
+#iwal.card * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Title Styling - Universal Approach */
+.anime-card [class*="title"],
+.anime-card [class*="name"],
+.anime-card h1,
+.anime-card h2,
+.anime-card h3,
+.anime-card h4,
+.anime-card h5,
+.anime-card h6,
+.anime-card.small-card [class*="title"],
+.anime-card.small-card [class*="name"],
+.anime-card.small-card h1,
+.anime-card.small-card h2,
+.anime-card.small-card h3,
+.anime-card.small-card h4,
+.anime-card.small-card h5,
+.anime-card.small-card h6,
+#iwal.card [class*="title"],
+#iwal.card [class*="name"],
+#iwal.card h1,
+#iwal.card h2,
+#iwal.card h3,
+#iwal.card h4,
+#iwal.card h5,
+#iwal.card h6 {
+    color: #f7bf07 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    margin: 0.5rem 0 !important;
+    transition: all 0.3s ease !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+}
+
+.anime-card:hover [class*="title"],
+.anime-card:hover [class*="name"],
+.anime-card:hover h1,
+.anime-card:hover h2,
+.anime-card:hover h3,
+.anime-card:hover h4,
+.anime-card:hover h5,
+.anime-card:hover h6,
+.anime-card.small-card:hover [class*="title"],
+.anime-card.small-card:hover [class*="name"],
+.anime-card.small-card:hover h1,
+.anime-card.small-card:hover h2,
+.anime-card.small-card:hover h3,
+.anime-card.small-card:hover h4,
+.anime-card.small-card:hover h5,
+.anime-card.small-card:hover h6,
+#iwal.card:hover [class*="title"],
+#iwal.card:hover [class*="name"],
+#iwal.card:hover h1,
+#iwal.card:hover h2,
+#iwal.card:hover h3,
+#iwal.card:hover h4,
+#iwal.card:hover h5,
+#iwal.card:hover h6 {
+    color: #4f46e5 !important;
+    text-shadow: 0 0 15px rgba(32, 3, 250, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Genre and Badge Styling - Universal */
+.anime-card [class*="genre"],
+.anime-card [class*="badge"],
+.anime-card [class*="tag"],
+.anime-card [class*="category"],
+.anime-card [class*="label"],
+.anime-card.small-card [class*="genre"],
+.anime-card.small-card [class*="badge"],
+.anime-card.small-card [class*="tag"],
+.anime-card.small-card [class*="category"],
+.anime-card.small-card [class*="label"],
+#iwal.card [class*="genre"],
+#iwal.card [class*="badge"],
+#iwal.card [class*="tag"],
+#iwal.card [class*="category"],
+#iwal.card [class*="label"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: #ffffff !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 15px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    margin: 0.3rem 0.3rem 0.3rem 0 !important;
+    display: inline-block !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    text-decoration: none !important;
+}
+
+.anime-card:hover [class*="genre"],
+.anime-card:hover [class*="badge"],
+.anime-card:hover [class*="tag"],
+.anime-card:hover [class*="category"],
+.anime-card:hover [class*="label"],
+.anime-card.small-card:hover [class*="genre"],
+.anime-card.small-card:hover [class*="badge"],
+.anime-card.small-card:hover [class*="tag"],
+.anime-card.small-card:hover [class*="category"],
+.anime-card.small-card:hover [class*="label"],
+#iwal.card:hover [class*="genre"],
+#iwal.card:hover [class*="badge"],
+#iwal.card:hover [class*="tag"],
+#iwal.card:hover [class*="category"],
+#iwal.card:hover [class*="label"] {
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 6px 12px rgba(255, 107, 107, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Description Text - Universal */
+.anime-card [class*="text"],
+.anime-card [class*="description"],
+.anime-card [class*="synopsis"],
+.anime-card [class*="summary"],
+.anime-card p,
+.anime-card span,
+.anime-card.small-card [class*="text"],
+.anime-card.small-card [class*="description"],
+.anime-card.small-card [class*="synopsis"],
+.anime-card.small-card [class*="summary"],
+.anime-card.small-card p,
+.anime-card.small-card span,
+#iwal.card [class*="text"],
+#iwal.card [class*="description"],
+#iwal.card [class*="synopsis"],
+#iwal.card [class*="summary"],
+#iwal.card p,
+#iwal.card span {
+    color: #b0b0b0 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin: 0.5rem 0 !important;
+    transition: all 0.3s ease !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+    text-decoration: none !important;
+}
+
+.anime-card:hover [class*="text"],
+.anime-card:hover [class*="description"],
+.anime-card:hover [class*="synopsis"],
+.anime-card:hover [class*="summary"],
+.anime-card:hover p,
+.anime-card:hover span,
+.anime-card.small-card:hover [class*="text"],
+.anime-card.small-card:hover [class*="description"],
+.anime-card.small-card:hover [class*="synopsis"],
+.anime-card.small-card:hover [class*="summary"],
+.anime-card.small-card:hover p,
+.anime-card.small-card:hover span,
+#iwal.card:hover [class*="text"],
+#iwal.card:hover [class*="description"],
+#iwal.card:hover [class*="synopsis"],
+#iwal.card:hover [class*="summary"],
+#iwal.card:hover p,
+#iwal.card:hover span {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Rating and Score - Universal */
+.anime-card [class*="rating"],
+.anime-card [class*="score"],
+.anime-card [class*="rate"],
+.anime-card [class*="star"],
+.anime-card.small-card [class*="rating"],
+.anime-card.small-card [class*="score"],
+.anime-card.small-card [class*="rate"],
+.anime-card.small-card [class*="star"],
+#iwal.card [class*="rating"],
+#iwal.card [class*="score"],
+#iwal.card [class*="rate"],
+#iwal.card [class*="star"] {
+    color: #ffd700 !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    transition: all 0.3s ease !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    text-decoration: none !important;
+}
+
+.anime-card:hover [class*="rating"],
+.anime-card:hover [class*="score"],
+.anime-card:hover [class*="rate"],
+.anime-card:hover [class*="star"],
+.anime-card.small-card:hover [class*="rating"],
+.anime-card.small-card:hover [class*="score"],
+.anime-card.small-card:hover [class*="rate"],
+.anime-card.small-card:hover [class*="star"],
+#iwal.card:hover [class*="rating"],
+#iwal.card:hover [class*="score"],
+#iwal.card:hover [class*="rate"],
+#iwal.card:hover [class*="star"] {
+    color: #ffed4e !important;
+    text-shadow: 0 0 10px rgba(255, 237, 78, 0.8) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Year, Status, Episode Info - Universal */
+.anime-card [class*="year"],
+.anime-card [class*="status"],
+.anime-card [class*="episode"],
+.anime-card [class*="duration"],
+.anime-card [class*="type"],
+.anime-card.small-card [class*="year"],
+.anime-card.small-card [class*="status"],
+.anime-card.small-card [class*="episode"],
+.anime-card.small-card [class*="duration"],
+.anime-card.small-card [class*="type"],
+#iwal.card [class*="year"],
+#iwal.card [class*="status"],
+#iwal.card [class*="episode"],
+#iwal.card [class*="duration"],
+#iwal.card [class*="type"] {
+    color: #888888 !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+    text-decoration: none !important;
+}
+
+.anime-card:hover [class*="year"],
+.anime-card:hover [class*="status"],
+.anime-card:hover [class*="episode"],
+.anime-card:hover [class*="duration"],
+.anime-card:hover [class*="type"],
+.anime-card.small-card:hover [class*="year"],
+.anime-card.small-card:hover [class*="status"],
+.anime-card.small-card:hover [class*="episode"],
+.anime-card.small-card:hover [class*="duration"],
+.anime-card.small-card:hover [class*="type"],
+#iwal.card:hover [class*="year"],
+#iwal.card:hover [class*="status"],
+#iwal.card:hover [class*="episode"],
+#iwal.card:hover [class*="duration"],
+#iwal.card:hover [class*="type"] {
+    color: #cccccc !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Loading State */
+.anime-card.loading {
+    opacity: 0.7;
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+}
+
+.anime-card.loading:hover {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+/* End Css Trending */
+
+/* .btn-sm:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+} */
