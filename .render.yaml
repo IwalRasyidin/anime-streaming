@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: anime-streaming
-    env: docker
-    plan: free
-    branch: main
-    buildCommand: ""
-    startCommand: apache2-foreground
-    autoDeploy: true
